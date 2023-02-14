@@ -14,9 +14,8 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem>main</sourceRootElem>
-                <sourceRootElem>components/generic_embedded_libs/gel/timer</sourceRootElem>
-                <sourceRootElem>components/I2C/i2c_devices/accelerometer/WSEN_ITDS</sourceRootElem>
-                <sourceRootElem>components/I2C/i2c_common</sourceRootElem>
+                <sourceRootElem>components/I2C</sourceRootElem>
+                <sourceRootElem>components/generic_embedded_libs</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

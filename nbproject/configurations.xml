@@ -5,9 +5,18 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="components" projectFiles="true">
-        <logicalFolder name="f1" displayName="gel" projectFiles="true">
-          <logicalFolder name="f1" displayName="timer" projectFiles="true">
-            <itemPath>components/generic_embedded_libs/gel/timer/timecheck.h</itemPath>
+        <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
+          <logicalFolder name="i2c_common" displayName="i2c_common" projectFiles="true">
+            <itemPath>components/I2C/i2c_common/i2c_common.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="i2c_devices" displayName="i2c_devices" projectFiles="true">
+            <logicalFolder name="accelerometer"
+                           displayName="accelerometer"
+                           projectFiles="true">
+              <logicalFolder name="WSEN_ITDS" displayName="WSEN_ITDS" projectFiles="true">
+                <itemPath>components/I2C/i2c_devices/accelerometer/WSEN_ITDS/wsen_itds.h</itemPath>
+              </logicalFolder>
+            </logicalFolder>
           </logicalFolder>
         </logicalFolder>
       </logicalFolder>
@@ -18,6 +27,7 @@
           <itemPath>main/peripherals/timer.h</itemPath>
           <itemPath>main/peripherals/heartbit.h</itemPath>
           <itemPath>main/peripherals/i2c.h</itemPath>
+          <itemPath>main/peripherals/spi.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -29,6 +39,20 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="components" projectFiles="true">
+        <logicalFolder name="I2C" displayName="I2C" projectFiles="true">
+          <logicalFolder name="i2c_common" displayName="i2c_common" projectFiles="true">
+            <itemPath>components/I2C/i2c_common/i2c_common.c</itemPath>
+          </logicalFolder>
+          <logicalFolder name="i2c_devices" displayName="i2c_devices" projectFiles="true">
+            <logicalFolder name="accelerometer"
+                           displayName="accelerometer"
+                           projectFiles="true">
+              <logicalFolder name="WSEN_ITDS" displayName="WSEN_ITDS" projectFiles="true">
+                <itemPath>components/I2C/i2c_devices/accelerometer/WSEN_ITDS/wsen_itds.c</itemPath>
+              </logicalFolder>
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="main" projectFiles="true">
         <logicalFolder name="f1" displayName="peripherals" projectFiles="true">
@@ -36,6 +60,7 @@
           <itemPath>main/peripherals/timer.c</itemPath>
           <itemPath>main/peripherals/heartbit.c</itemPath>
           <itemPath>main/peripherals/i2c.c</itemPath>
+          <itemPath>main/peripherals/spi.c</itemPath>
         </logicalFolder>
         <itemPath>main/main.c</itemPath>
       </logicalFolder>
@@ -48,7 +73,8 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>main</Elem>
-    <Elem>components/generic_embedded_libs/gel/timer</Elem>
+    <Elem>components/I2C</Elem>
+    <Elem>components/generic_embedded_libs</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -58,9 +84,9 @@
         <targetDevice>PIC24FJ64GA702</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>ICD3PlatformTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC16</languageToolchain>
-        <languageToolchainVersion>1.36</languageToolchainVersion>
+        <languageToolchainVersion>1.00</languageToolchainVersion>
         <platform>2</platform>
       </toolsSet>
       <packs>
@@ -261,10 +287,7 @@
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
         <property key="UART 1" value="true"/>
         <property key="UART 2" value="true"/>
-        <property key="debugoptions.debug-startup" value="Use system settings"/>
-        <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>

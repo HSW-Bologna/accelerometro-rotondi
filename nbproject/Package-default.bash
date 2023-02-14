@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/accelerometro-rotondi.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=accelerometro-rotondi.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=accelerometro-rotondi.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/accelerometro-rotondi.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=accelerometro-rotondi.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=accelerometro-rotondi/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/accelerometro-rotondi.x/bin
+makeDirectory ${TMPDIR}/accelerometro-rotondi/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/accelerometro-rotondi.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/accelerometro-rotondi.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/accelerometro-rotondi.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/accelerometro-rotondi.tar *
 checkReturnCode
 
 # Cleanup
