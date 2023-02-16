@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=accelerometro-rotondi
+PROJECTNAME=accelerometro-rotondi.X
 
 # Active Configuration
 DEFAULTCONF=default

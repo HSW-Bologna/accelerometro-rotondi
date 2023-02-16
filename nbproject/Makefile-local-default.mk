@@ -14,24 +14,23 @@
 # You can invoke make with the values of the macros:
 # $ makeMP_CC="/opt/microchip/mplabc30/v3.30c/bin/pic30-gcc" ...  
 #
-PATH_TO_IDE_BIN=/home/xgampx/Desktop/UNI/TIROCINIO/microchip/mplabx/v5.50/mplab_platform/platform/../mplab_ide/modules/../../bin/
+PATH_TO_IDE_BIN=/home/maldus/Mount/Data/Local/microchip/mplabx/v6.05/mplab_platform/platform/../mplab_ide/modules/../../bin/
 # Adding MPLAB X bin directory to path.
-PATH:=/home/xgampx/Desktop/UNI/TIROCINIO/microchip/mplabx/v5.50/mplab_platform/platform/../mplab_ide/modules/../../bin/:$(PATH)
+PATH:=/home/maldus/Mount/Data/Local/microchip/mplabx/v6.05/mplab_platform/platform/../mplab_ide/modules/../../bin/:$(PATH)
 # Path to java used to run MPLAB X when this makefile was created
-MP_JAVA_PATH="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/mplabx/v5.50/sys/java/zulu8.40.0.25-ca-fx-jre8.0.222-linux_x64/bin/"
+MP_JAVA_PATH="/home/maldus/Mount/Data/Local/microchip/mplabx/v6.05/sys/java/zulu8.64.0.19-ca-fx-jre8.0.345-linux_x64/bin/"
 OS_CURRENT="$(shell uname -s)"
-MP_CC="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin/xc16-gcc"
+MP_CC="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin/xc16-gcc"
 # MP_CPPC is not defined
 # MP_BC is not defined
-MP_AS="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin/xc16-as"
-MP_LD="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin/xc16-ld"
-MP_AR="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin/xc16-ar"
-DEP_GEN=${MP_JAVA_PATH}java -jar "/home/xgampx/Desktop/UNI/TIROCINIO/microchip/mplabx/v5.50/mplab_platform/platform/../mplab_ide/modules/../../bin/extractobjectdependencies.jar"
-MP_CC_DIR="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin"
+MP_AS="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin/xc16-as"
+MP_LD="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin/xc16-ld"
+MP_AR="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin/xc16-ar"
+DEP_GEN=${MP_JAVA_PATH}java -jar "/home/maldus/Mount/Data/Local/microchip/mplabx/v6.05/mplab_platform/platform/../mplab_ide/modules/../../bin/extractobjectdependencies.jar"
+MP_CC_DIR="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin"
 # MP_CPPC_DIR is not defined
 # MP_BC_DIR is not defined
-MP_AS_DIR="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin"
-MP_LD_DIR="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin"
-MP_AR_DIR="/home/xgampx/Desktop/UNI/TIROCINIO/microchip/xc16/v1.36/bin"
-# MP_BC_DIR is not defined
-DFP_DIR=/home/xgampx/Desktop/UNI/TIROCINIO/microchip/mplabx/v5.50/packs/Microchip/PIC24F-GA-GB_DFP/1.4.141
+MP_AS_DIR="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin"
+MP_LD_DIR="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin"
+MP_AR_DIR="/home/maldus/Mount/Data/Local/microchip/xc16/v1.36/bin"
+DFP_DIR=/home/maldus/.mchp_packs/Microchip/PIC24F-GA-GB_DFP/1.4.141

@@ -1,5 +1,7 @@
 #include "../components/I2C/i2c_common/i2c_common.h"
 #include "../components/I2C/i2c_devices/accelerometer/WSEN_ITDS/wsen_itds.h"
+#include "../components/I2C/i2c_ports/PIC/i2c_bitbang.h"
+
 #include "gel/timer/timecheck.h"
 #include "peripherals/hardwareprofile.h"
 #include "peripherals/heartbit.h"
@@ -51,10 +53,11 @@ int abs(int x) {
         return x;
 }
 
-#define COORDS_MAX_LOCAL 50
+#define COORDS_MAX_LOCAL 20
 #define COORDS_MAX_OFFSET 100
 #define COORDS_ROWS 10
 #define COORDS_COLS 3
+#define MEMS_VALUE_FACTOR 4
 const i2c_driver_t wsen_itds_driver = {.device_address = 0x32,
     .i2c_transfer = i2c_port_transfer};
 int16_t coords_mean[COORDS_COLS] = {0, 0, 0};
@@ -85,9 +88,9 @@ int update_full_scale(i2c_driver_t driver, int8_t value) {
     reset_coords_max();
 
     // if it was reading the offset , restart reading
-    if (f_offset)
+    if (f_offset) {
         coords_offset_count = 0;
-    else // reset offset
+    } else // reset offset
     {
         for (i = 0; i < COORDS_COLS; i++) {
             coords_offset[i] = 0;
@@ -116,10 +119,8 @@ int main(void) {
     system_init();
     timer_init();
     heartbit_init();
-    i2c_init();
+    i2c_init(3);
     spi_init_slave_bitbang();
-
-    i2c_findaddress();
 
     wsen_itds_init(wsen_itds_driver);
 
@@ -137,20 +138,19 @@ int main(void) {
             coords_mem[i][j] = 0;
 
     for (;;) {
-        //        heartbit_manage();
+        heartbit_manage();
 
         if (f_reset_coords_max)
             reset_coords_max();
-        if (f_update_scale)
+        if (f_update_scale) {
             update_full_scale(wsen_itds_driver, scale_to_change);
+        }
 
         if (HAP_CS2_PORT == 1 && f_timer == 1) {
             f_timer = 0;
             res = wsen_itds_get_all_coords(wsen_itds_driver, coords);
             if (!res) {
-
                 for (i = 0; i < COORDS_COLS; i++) {
- 
                     if (f_offset)
                         coords_mem_offset[coords_offset_count][i] = coords[i];
                     else
@@ -200,9 +200,14 @@ int main(void) {
                         coords_sum[i] += (int64_t) coords_max[i];
                         coords_mean[i] = ((int64_t) coords_sum[i] /
                                 (int64_t) min16(coords_count, COORDS_ROWS));
+                        coords_mean[i] /= MEMS_VALUE_FACTOR;
 
                         coords_max[i] = 0;
                     }
+                    
+                    uint16_t inversion_buffer = coords_mean[0];
+                    coords_mean[0] = coords_mean[1];
+                    coords_mean[1] = inversion_buffer;
 
                     Nop();
                     Nop();
@@ -270,7 +275,7 @@ void __attribute((interrupt, auto_psv)) _IOCInterrupt() {
         }
 
         HAP_ABIL_LAT = 0;
-
+        heartbit_communication_received();
         IFS1bits.IOCIF = 0;
     }
 }

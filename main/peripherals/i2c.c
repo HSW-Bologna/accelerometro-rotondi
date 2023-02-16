@@ -48,13 +48,6 @@ static void i2c_start_condition() {
   __delay_us(CLOCK_DELAY);
 }
 
-static void i2c_restart_condition() {
-  HAP_SDA_TRIS = OUTPUT_PIN;
-  HAP_SDA_LAT = HIGH;
-  HAP_CLK_LAT = HIGH;
-  HAP_SDA_LAT = LOW;
-}
-
 static void i2c_stop_condition() {
   HAP_SDA_TRIS = OUTPUT_PIN; // 1;      /* dati in uscita dal micro */
   HAP_SDA_LAT = 0;           /* stop condition                       */

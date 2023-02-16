@@ -15,7 +15,7 @@ void timer_init(void)
     TMR1            = 0;
     T1CONbits.TCS   = 0;            // Internal Clock
     T1CONbits.TCKPS = 0;            // Clock source prescaler
-    PR1             = 1172;    // Period, interrupt every 1ms at 32MHz
+    PR1             = 15873;    // Period, interrupt every 1ms at 32MHz
     T1CONbits.TON   = 1;            // Enable timer 1
     IPC0bits.T1IP   = 4;            // timer 1 interrupt priority
     IFS0bits.T1IF   = 0;
@@ -39,6 +39,6 @@ unsigned long get_millis(void)
 void __attribute__((interrupt, auto_psv)) _T1Interrupt(void)
 {
     millis++;
-    f_timer = 1;
+    f_timer = 1;    
     IFS0bits.T1IF = 0;
 }
